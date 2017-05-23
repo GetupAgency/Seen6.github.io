@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ask</title>
+</head>
+    <body>
+        <script type="text/javascript">
+            var lng = (window.navigator.userLanguage || window.navigator.language);
+                if (lng.length >= 2) {
+                    lng = lng.substr(0, 2);
+                    if(lng == "fr")
+                        window.location.href = "fr/"
+                    else
+                        window.location.href = "en/"
+                }
+        </script>
+    </body>
+</html>

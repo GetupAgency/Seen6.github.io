@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html data-ng-app="re.co" data-ng-controller="AppCtrl">
+	<head lang="fr" prefix="og: //ogp.me/ns# fb: //ogp.me/ns/fb# recommendapp: //ogp.me/ns/fb/recommendapp#">
+	  <title>Ask - Bons plans entre potes</title>
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	  <meta name="description" content="Qui te connaît mieux que tes amis ? Ask permet de découvrir en trois clics ton prochain bar, restaurant, soirée, musique, séries, livre...">
+	  <meta property="fb:app_id" content="315961578502399" />
+	  <meta property="og:lang" content="fr_FR" />
+	  <meta property="og:description" content="L'app qui te permet d'obtenir les meilleurs plans" />
+	  <meta property="og:title" content="Ask - Bons plans entre potes" />
+	  <meta property="og:image" content="http://re.co/ask/images/fb-invite-ask.jpg" />
+	  <link rel="stylesheet" type="text/css" href="/styles/all.css" />
+	  <link rel="stylesheet" type="text/css" href="/ask/css/custom.css" />
+	  <link rel="stylesheet" type="text/css" href="/ask/js/jquery.fullPage.css" />
+	  <link rel="stylesheet" type="text/css" href="/styles/tablet.css" media="screen and (min-width: 480px)" />
+	  <link rel="stylesheet" type="text/css" href="/styles/desktop.css" media="screen and (min-width: 768px)" />
+		<link rel="stylesheet" href="/ask/css/intlTelInput.css" />
+	  <!--[if lt IE 9]>
+	  <script type="text/javascript" src="/libs/respond/src/respond.js"></script>
+	  <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	  <![endif]-->
+	  <script src="//apis.google.com/js/client.js"></script>
+	  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="/ask/js/intlTelInput.min.js"></script>
+	  <script src="//re.co/scripts/bundleLibs.js"></script>
+	  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+	  <script src="//re.co/scripts/bundle.js"></script>
+	  <script src="/ask/js/velocity.js"></script>
+	  <script src="/ask/js/askLandingController.js"></script>
+	  <script src="/ask/js/jquery.fullPage.js"></script>
+	  <script src="/ask/js/main.js"></script>
+	  <meta charset="UTF-8">
+
+		<!-- Facebook Pixel Code -->
+		<script>
+		!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+		n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+		n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+		t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+		document,'script','https://connect.facebook.net/en_US/fbevents.js');
+		fbq('init', '299536613722971');
+		fbq('track', 'PageView');
+		</script>
+		<noscript><img height="1" width="1" style="display:none"
+		src="https://www.facebook.com/tr?id=299536613722971&ev=PageView&noscript=1"
+		/></noscript>
+
+        <script>
+            (function(h,o,t,j,a,r){
+                h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+                h._hjSettings={hjid:403759,hjsv:5};
+                a=o.getElementsByTagName('head')[0];
+                r=o.createElement('script');r.async=1;
+                r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+                a.appendChild(r);
+            })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+        </script>
+
+
+	</head>
+	<body data-ng-controller="AskLandingCtrl">
+    <div id="fullpage">
+			<div class="gutter-top" id="header2" >
+	      <img class="header-fix" id="logo" src="/ask/images/ask-logo.svg" width="60" height="60">
+	      <img class="header-fix" onclick="$.fn.fullpage.moveSectionUp();" style="display:none;cursor:pointer;" id="logo-arrow" src="/ask/images/top.png" width="60" height="60">
+	      <button style="display:none;" onclick="$.fn.fullpage.moveTo(1);" ng-click="focusInput();" class="button button--primary" id="logo-getapp">TÉLÉCHARGER L'APP</button>
+				<div id="lang-switch" class="hide-tablet" style="line-height: 4;display:none;">
+					<span ng-click="switchLang('fr')" class="t-color-dark" style="cursor:pointer;">FR</span> /
+					<span ng-click="switchLang('en')" class="t-color-primary" style="cursor:pointer;">EN</span>
+				</div>
+			</div>
+	    <div class="section" id="section1">
+				<div class="wrap">
+					<div class="imgsContainer">
+						<img src="/ask/images/device1.png" style="max-width:300px;max-height:100%;" class="img-anim" alt="iphone" id="iphone2" />
+						<img src="/ask/images/device2_fr.png" style="max-width: 300px;max-height: 92%;margin-top: 20px;" class="img-anim" alt="iphone" id="iphone3" />
+					</div>
+					<div class="box">
+						<div class="ask-app__vert-center u-align-center u-align-left-desktop">
+							<h2 class="typer-fix ask-app_heading u-align-center u-align-left-desktop t-color-lightest">
+								La façon la plus rapide de trouver son prochain
+							<span class="hide-desktop"><br></span>
+								<i id="typerDiv" data-typer-targets="coup de cœur musical, film de l'année, bobun favori, paradis sur terre, bar caché">&#32;festival incontournable&#32;
+								</i>
+							</h2>
+							<ul>
+								<li class="gutter-top">
+									<h3 class="u-align-center getapp-button"><a href="http://re.co/getask" ng-click="dlFromMobile();" target="_blank" class="button button--primary">TÉLÉCHARGER L'APP</a></h3>
+									<div class="stores-buttons">
+										<a href="https://itunes.apple.com/fr/app/ask-les-bons-conseils-entre/id1096626376?mt=8" target="_blank">
+											<img src="/ask/images/fr_AppleStore.jpg" style="width:180px;" alt="Disponible sur l'AppStore">
+										</a>
+										<a href="https://play.google.com/store/apps/details?id=com.recommend.ask&hl=fr" target="_blank">
+											<img src="/ask/images/fr_GooglePlayStore.jpg" style="width:180px;" alt="Disponible sur le Google PlayStore">
+										</a>
+									</div>
+								</li>
+							<ul>
+							<h4 class="heading--smaller u-align- l-gutter-top ask-app__title-tiny">Reçois le lien de téléchargement sur ton mobile et vois par toi même!</h4>
+							<div class="grid-24 gutter-top no-gutter-left number-input">
+								<div class="grid-24 no-gutter gutter-bottom">
+									<form name="phoneForm" ng-submit="getAppBySms(phoneNumber);">
+										<div class="grid-18 grid-desktop-18 no-gutter-left">
+											<input type="tel" id="tel-input" name="phoneInput" class="form__text form__block" ng-model="phoneNumber" intl-tel-input>
+										</div>
+										<div class="grid-4 grid-desktop-4 no-gutter-left">
+											<button data-loading-button data-ng-model="isSending" id="sendLinkBtn" data-loading-txt="EN COURS D'ENVOI..." class="button button--primary" type="submit" style="height:47px;">ENVOYER LE LIEN</button>
+										</div>
+									</form>
+								</div>
+							</div>
+							<div ng-show="isOK" class="form__error grid-24 no-gutter-left">Oops ! Ton numéro n'est pas correct.</div>
+							<div ng-show="isSent" class="grid-24 no-gutter-left">Merci ! Tu vas recevoir le lien dans quelques secondes !</div>
+						</div>
+					</div>
+					<div>
+					</div>
+					<section class="ask-app__lin-gradient">
+						<div class="master__innerCell">
+							<h1 class="heading t-color-lightest u-align-center l-gutter-top" style="font-weight: 600 !important;">
+								En galère pour trouver des bons plans ?<br />
+								Fais défiler, on a la solution !
+							</h1>
+							<div style="padding-bottom:5px;">
+								<img onclick="$.fn.fullpage.moveSectionDown();" src="/ask/images/gobottom.png" style="cursor:pointer;"/>
+							</div>
+						</div>
+					</section>
+			</div>
+		</div>
+	  <div class="section moveDown" id="section2">
+			<div class="wrap" id="Section1">
+				<div class="box">
+					<h3 class="ask-app_heading u-align-left">Fini les pertes de temps, Ask ne prend que 15 secondes !</h3>
+					On sait que tu es toujours pressé ! C'est pourquoi nous avons développé Ask : l'expérience de <strong>Questions/Réponses la plus rapide</strong> jamais créée.
+					Choisis un thème, ajoute des tags et on s'occupe de tout !
+				</div>
+				<div class="imgsContainer">
+					<img src="/ask/images/iphone_1_fr.png" style="" class="img-anim" alt="iphone" id="iphone-yellow" />
+				</div>
+			</div>
+		</div>
+		<div class="section" id="section3">
+			<div class="wrap" id="Section2">
+				<div class="box">
+				  <h2 class="ask-app_heading u-align-left">Tes meilleurs contacts suggérés selon le thème et le lieu</h2>
+					C'est toujours fastidieux de choisir les bonnes personnes en fonction de chaque situation, surtout quand on n'a pas le temps.
+					Grâce à notre <strong>algorithme de contacts intelligent</strong>, on te suggère tes meilleurs contacts, n'importe où, n'importe quand.
+				</div>
+				<div class="imgsContainer">
+					<img src="/ask/images/iphone_2_fr.png"  class="img-anim" alt="iphone" id="iphone-yellow" />
+				</div>
+			</div>
+		</div>
+		<div class="section" id="section4">
+			<div class="wrap" id="Section3">
+				<div class="box">
+				  <h2 class="ask-app_heading u-align-left">Ask voyage à travers ton réseau pour te proposer les meilleures réponses.</h2>
+					Ne bouges plus, Ask se charge du reste ! Tes amis peuvent répondre directement dans l'app ou <strong>transférer ta question à leurs potes</strong>.
+					En utilisant notre moteur de recherche social intelligent dans ton réseau, Ask te fournira toujours des avis de confiance.
+				</div>
+				<div class="imgsContainer">
+					<img src="/ask/images/iphone_3_fr.png" class="img-anim" alt="iphone" id="iphone-yellow" />
+				</div>
+			</div>
+		</div>
+		<div class="section" id="section5">
+			<div class="wrap" id="Section4">
+				<div class="box">
+				  <h2 class="ask-app_heading u-align-left">La solution pour des avis de qualité !</h2>
+					Tes Asks peuvent être partagés sur tous les réseaux sociaux : les non-utilisateurs peuvent répondre <strong>facilement dans leur navigateur</strong>.
+					Clairement, tes amis n'auront plus d'excuses pour ne pas te refiler leurs meilleurs plans !
+				</div>
+				<div class="imgsContainer">
+					<img src="/ask/images/iphone_4_fr.png" class="img-anim" alt="iphone" id="iphone-yellow" />
+				</div>
+			</div>
+		</div>
+		<div class="section" id="section6" style="display:flex;">
+			<div style="margin:auto;margin-top:15%;">
+				<h1 class="ask-app_heading u-align-center u-mt-medium">4 raisons d'utiliser Ask dès maintenant</h1>
+	    	<div class="l-wrapper-mega">
+	      	<div class="grid-24 grid-desktop-12">
+	        	<div class="info">
+	          	<div class="u-align-center">
+								<img src="/ask/images/quick-mode-on.png" width="26" height="50" />
+							</div>
+	            <h3 class="heading--small t-color-darkest u-align-center gutter-top" style="font-weight:600;">Fini les pertes de temps</h3>
+	            <p class="t-color-darkest gutter-top u-align-center" style="line-height:1.3">
+	            	Poser une question et l'envoyer aux bonnes personnes te prendra que quelques secondes: c'est fluide, rapide, et facile.
+	            </p>
+	         </div>
+	      	</div>
+	        <div class="grid-24 grid-desktop-12">
+	        	<div class="info">
+	          	<div class="u-align-center">
+								<img src="/ask/images/christmas-star.png" width="52" height="50" />
+							</div>
+	            <h3 class="heading--small t-color-darkest u-align-center gutter-top" style="font-weight:600;">Tes contacts sont triés par pertinence</h3>
+	            <p class="t-color-darkest gutter-top u-align-center" style="line-height:1.3">
+	             	Demander à tes meilleurs contacts devient un jeu d'enfants: Ask apprend des précédentes Questions&Réponses pour te suggérer automatiquement les contacts les plus pertinents.
+	            </p>
+	         	</div>
+	        </div>
+	    	</div>
+	      <div class="l-wrapper-mega">
+	        <div class="grid-24 grid-desktop-12">
+	          <div class="info">
+	          	<div class="u-align-center">
+								<img src="/ask/images/user-male-circle.png" width="50" height="50" />
+							</div>
+	          	<h3 class="heading--small t-color-darkest u-align-center gutter-top" style="font-weight:600;">Du contenu adapaté</h3>
+	          	<p class="t-color-darkest gutter-top u-align-center" style="line-height:1.3">
+	          		Les réponses sont uniquement des recommandations avec des informations utilies à propos de lieux, services, et produits qui t'intéressent. Pas de blabla inutile.
+	          	</p>
+	          </div>
+	        </div>
+	        <div class="grid-24 grid-desktop-12">
+	          <div class="info">
+	          	<div class="u-align-center">
+								<img src="/ask/images/search.png" width="49" height="50" />
+							</div>
+	          	<h3 class="heading--small t-color-darkest u-align-center gutter-top" style="font-weight:600;">Fini les prises de tête</h3>
+	          	<p class="t-color-darkest gutter-top u-align-center" style="line-height:1.3">
+	          		Ask organise tes réponses ! Au revoir les prises de tête en chercheant à travers tes vieux SMS ou vieilles conversations Messenger.
+	          	</p>
+	        	</div>
+	      	</div>
+				</div>
+			</div>
+	  </div>
+		<div class="section" id="section7">
+			<section class="ask-app__mt60" style="height: 100%;">
+				<div class="" style="height: 50%;display:flex">
+					<div style="margin:auto">
+						<h2 class="ask-app_heading u-align-center t-color-darkest" style="margin-top: 15%;">Merci d'avoir pris le temps de lire. Envie d'essayer ?</h2>
+						<h3 class="u-align-center">
+							<button onclick="$.fn.fullpage.moveTo(1);" class="button button--primary">TÉLÉCHARGER L'APP</button>
+						</h3>
+					</div>
+					<div class="grid-24 u-align-center l-gutter-top l-gutter-bottom abs-bottom">
+						<h2 style="margin-top: 8%;font-weight: 600;" class="heading t-color-lightest">Nous contacter</h2>
+						<h2 class="heading ask-app__heading--bordered t-color-primary"><a href="http://m.me/getasknow" target="_blank">m.me/getasknow</a></h2>
+					</div>
+				</div>
+			</section>
+	  </div>
+	</body>
+</html>
